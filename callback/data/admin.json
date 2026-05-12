@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nama": "Adam",
+        "email": "adam@beras3n.online",
+        "alamat": "Purwawinangun"
+    },
+    {
+        "id": 2,
+        "nama": "Diego",
+        "email": "Diego@beras3n.online",
+        "alamat": "Citangtu"
+    }
+]

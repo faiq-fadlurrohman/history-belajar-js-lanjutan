@@ -1,0 +1,20 @@
+[
+    {
+        "nama": "Beckham",
+        "email": "beckham@beras3n.online",
+        "alamat": "Awirarangan",
+        "idAdmin": 1
+    },
+    {
+        "nama": "Rizky",
+        "email": "rizky@beras3n.online",
+        "alamat": "Cidahu",
+        "idAdmin": 1
+    },
+    {
+        "nama": "Taufik",
+        "email": "taufik@beras3n.online",
+        "alamat": "Sindangagung",
+        "idAdmin": 2
+    }
+]
