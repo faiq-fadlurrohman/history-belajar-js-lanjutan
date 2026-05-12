@@ -44,27 +44,38 @@
 // console.log("selesai");
 
 // Asynchronous Callback
-function getDataCusotmer(url, success, error) {
-    let a = new XMLHttpRequest();
+// function getDataCusotmer(url, success, error) {
+//     let a = new XMLHttpRequest();
 
-    a.onreadystatechange = function() {
-        if (a.readyState === 4) {
-            if (a.status === 200) {
-                success(a.response);
-            } else if (a.status === 404) {
-                error();
-            }
-        }
-    }
+//     a.onreadystatechange = function() {
+//         if (a.readyState === 4) {
+//             if (a.status === 200) {
+//                 success(a.response);
+//             } else if (a.status === 404) {
+//                 error();
+//             }
+//         }
+//     }
 
-    a.open("get", url);
-    a.send();
-}
+//     a.open("get", url);
+//     a.send();
+// }
 
-console.log("start");
-getDataCusotmer("data/customer.json", results => {
-    console.log(JSON.parse(results));
-}, () => {
+// console.log("start");
+// getDataCusotmer("data/customer.json", results => {
+//     console.log(JSON.parse(results));
+// }, () => {
 
+// });
+// console.log("finish");
+
+// JQuery
+console.log("Start");
+$.ajax({
+    url: "data/customer.json",
+    success: (cus) => {
+        cus.forEach(c => console.log(c.nama));
+    },
+    error: e => console.log(e.responseText)
 });
-console.log("finish");
+console.log("Finish");
