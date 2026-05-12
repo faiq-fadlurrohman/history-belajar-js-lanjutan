@@ -42,3 +42,29 @@
 //     console.log(c.nama);
 // });
 // console.log("selesai");
+
+// Asynchronous Callback
+function getDataCusotmer(url, success, error) {
+    let a = new XMLHttpRequest();
+
+    a.onreadystatechange = function() {
+        if (a.readyState === 4) {
+            if (a.status === 200) {
+                success(a.response);
+            } else if (a.status === 404) {
+                error();
+            }
+        }
+    }
+
+    a.open("get", url);
+    a.send();
+}
+
+console.log("start");
+getDataCusotmer("data/customer.json", results => {
+    console.log(JSON.parse(results));
+}, () => {
+
+});
+console.log("finish");
