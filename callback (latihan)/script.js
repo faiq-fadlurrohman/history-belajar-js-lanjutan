@@ -1,30 +1,32 @@
-$.ajax({
-    url: "http://www.omdbapi.com/?apikey=3628ca2c&s=avengers",
-    success: results => {
-        const movies = results.Search;
-        let cards = '';
-        movies.forEach(m => {
-            cards += showCards(m);
-        });
-        $(".movie-container").html(cards);
+$(".search-button").on("click", function() {
+    $.ajax({
+        url: "http://www.omdbapi.com/?apikey=3628ca2c&s=" + $(".input-keyword").val(),
+        success: results => {
+            const movies = results.Search;
+            let cards = '';
+            movies.forEach(m => {
+                cards += showCards(m);
+            });
+            $(".movie-container").html(cards);
 
-        // Ketika tombol detail diklik
-        $(".modal-detail-button").on("click", function() {
-            $.ajax({
-                url: "http://www.omdbapi.com/?apikey=3628ca2c&i=" + $(this).data("imdbid"),
-                success: md => {
-                    const movieDetail = showMovieDetail(md);
-                    $(".modal-body").html(movieDetail);
-                },
-                error: (e) => {
-                    console.log(e.responseText);
-                }
-            })
-        });
-    },
-    error: (e) => {
-        console.log(e.responseText);
-    }
+            // Ketika tombol detail diklik
+            $(".modal-detail-button").on("click", function() {
+                $.ajax({
+                    url: "http://www.omdbapi.com/?apikey=3628ca2c&i=" + $(this).data("imdbid"),
+                    success: md => {
+                        const movieDetail = showMovieDetail(md);
+                        $(".modal-body").html(movieDetail);
+                    },
+                    error: (e) => {
+                        console.log(e.responseText);
+                    }
+                })
+            });
+        },
+        error: (e) => {
+            console.log(e.responseText);
+        }
+    });
 });
 
 function showCards(m) {
