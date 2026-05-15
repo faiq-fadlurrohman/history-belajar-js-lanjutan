@@ -38,23 +38,55 @@
 //     .catch(response => console.log("NOT OK : " + response));
 
 // Contoh 2
-let ditepati = true;
-const janji2 = new Promise((resolve, reject) => {
-    if (ditepati) {
-        setTimeout(() => {
-            resolve("Ditepati setelah beberapa waktu.");
-        }, 2000);
-    } else {
-        setTimeout(() => {
-            reject("Tidak ditepati setelah beberapa waktu.");
-        }, 2000)
-    }
+// let ditepati = true;
+// const janji2 = new Promise((resolve, reject) => {
+//     if (ditepati) {
+//         setTimeout(() => {
+//             resolve("Ditepati setelah beberapa waktu.");
+//         }, 2000);
+//     } else {
+//         setTimeout(() => {
+//             reject("Tidak ditepati setelah beberapa waktu.");
+//         }, 2000)
+//     }
+// });
+
+// console.log("start");
+// console.log(janji2.then(() => console.log(janji2)));
+// janji2
+//     .finally(() => console.log("Selesai menunggu."))
+//     .then(response => console.log("OK : " + response))
+//     .catch(response => console.log("NOT OK : " + response));
+// console.log("finish");
+
+// Contoh penggunaan Promise.all()
+const film = new Promise(resolve => {
+    setTimeout(() => {
+        resolve([{
+            judul: "Blitz Curler",
+            sutradara: "Ujang",
+            pemeran: "Rizky, Taufik"
+        }])
+    }, 2000);
 });
 
-console.log("start");
-// console.log(janji2.then(() => console.log(janji2)));
-janji2
-    .finally(() => console.log("Selesai menunggu."))
-    .then(response => console.log("OK : " + response))
-    .catch(response => console.log("NOT OK : " + response));
-console.log("finish");
+const cuaca = new Promise(resolve => {
+    setTimeout(() => {
+        resolve([{
+            kota: "Bandung",
+            temperatur: 28,
+            kondisi: "Cerah"
+        }]);
+    }, 500);
+});
+
+// film.then(response => console.log(response));
+// cuaca.then(response => console.log(response));
+
+Promise.all([film, cuaca])
+    // .then(response => console.log(response));
+    .then(response => {
+        const [film, cuaca] = response;
+        console.log(film);
+        console.log(cuaca);
+    });
