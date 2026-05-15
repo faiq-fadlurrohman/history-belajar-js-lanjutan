@@ -24,15 +24,37 @@
 
 // Promise
 // Contoh 1
-let ditepati = false;
-const janji1 = new Promise((resolve, reject) => {
+// let ditepati = false;
+// const janji1 = new Promise((resolve, reject) => {
+//     if (ditepati) {
+//         resolve("Janji telah ditepati.");
+//     } else {
+//         reject("Ingkar janji...");
+//     }
+// });
+
+// janji1
+//     .then(response => console.log("OK : " + response))
+//     .catch(response => console.log("NOT OK : " + response));
+
+// Contoh 2
+let ditepati = true;
+const janji2 = new Promise((resolve, reject) => {
     if (ditepati) {
-        resolve("Janji telah ditepati.");
+        setTimeout(() => {
+            resolve("Ditepati setelah beberapa waktu.");
+        }, 2000);
     } else {
-        reject("Ingkar janji...");
+        setTimeout(() => {
+            reject("Tidak ditepati setelah beberapa waktu.");
+        }, 2000)
     }
 });
 
-janji1
+console.log("start");
+// console.log(janji2.then(() => console.log(janji2)));
+janji2
+    .finally(() => console.log("Selesai menunggu."))
     .then(response => console.log("OK : " + response))
     .catch(response => console.log("NOT OK : " + response));
+console.log("finish");
